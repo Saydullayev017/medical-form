@@ -1,217 +1,212 @@
+/*
+    script.js
+    - Handles UI interactions for the medical form application:
+        * Fill example data (uses fictional placeholder data only)
+        * Reset the form
+        * Validate required fields
+        * Generate a DOCX report using docx + FileSaver
+    NOTE: All autofill/example values are intentionally fictional and not real personal data.
+*/
+document.addEventListener('DOMContentLoaded', function() {
+    // UI control references
+    const saveBtn = document.getElementById('saveBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const fillExampleBtn = document.getElementById('fillExampleBtn');
+    const statusMessage = document.getElementById('statusMessage');
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Элементы управления
-            const saveBtn = document.getElementById('saveBtn');
-            const resetBtn = document.getElementById('resetBtn');
-            const fillExampleBtn = document.getElementById('fillExampleBtn');
-            const statusMessage = document.getElementById('statusMessage');
-            
-            // Кнопка для заполнения примера данных
-            fillExampleBtn.addEventListener('click', function() {
-                if (confirm('Namuna ma\'lumotlar bilan to\'ldirishni xohlaysizmi? Bu sizning joriy ma\'lumotlaringizni o\'chirib tashlaydi.')) {
-                    fillExampleData();
-                    showStatus('Namuna ma\'lumotlar bilan to\'ldirildi', true);
-                }
-            });
-            
-            // Функция заполнения примера данных
-            function fillExampleData() {
-                // Основные данные пациента (первый лист)
-                document.getElementById('examDate').value = '2026-01-16';
-                document.getElementById('examTime').value = '16:43';
-                document.getElementById('patientName').value = 'Turdibayev Raximjan';
-                document.getElementById('patientId').value = '1395';
-                document.getElementById('arrivalDate').value = '2026-01-16';
-                document.getElementById('birthDate').value = '1966-10-05';
-                document.getElementById('address').value = 'Toshkent Viloyati, ANGREN / Ozbekiston Mustaqillik kochasi 170-uy';
-                
-                // Шикоятлар
-                document.getElementById('complaints').value = 'belning chap qismida og\'riq, siyganda achishishi, umumiy xolisizlik.';
-                
-                // Anamnesis morbi
-                document.getElementById('anamnesisMorbi').value = 'Anamnezdan ma\'lumki, yuqoridagi shikoyatlar bemorda 2025 yil noyabr oyidan boshlangan. va bemor shifokorga murojat qilmagan. 06/12/25 shikoyatlar takrorlanganligi sababli Angrenda urolog ko\'rigiga borgan va buyrak ultratovush tekshiruvida o\'smaga o\'xshash narsa aniqlangan. 16/01/2026 bemor RIO va RIATM poliklinikasiga yo\'llanma olib kelgan. 16/01/2026 RIO va RIATM onkuorologiya bo\'limiga diagnostik davo uchun gospitalizatsiya qilindi.';
-                
-                // Anamnesis vitae
-                document.getElementById('epidemic').value = 'Yo\'q';
-                document.getElementById('tuberculosis').value = 'Yo\'q';
-                document.getElementById('hiv').value = 'Yo\'q';
-                document.getElementById('hepatitis').value = 'Yo\'q';
-                document.getElementById('syphilis').value = 'Yo\'q';
-                document.getElementById('covid').value = 'Yo\'q';
-                document.getElementById('allergy').value = 'Dorilarga allergiya kuzatilmagan';
-                document.getElementById('comorbidities').value = 'Surunkali kalkulyoz xolesistit';
-                document.getElementById('familyHistory').value = 'Xususiyatsiz';
-                document.getElementById('implants').value = 'Yo\'q';
-                document.getElementById('surgeries').value = 'Yo\'q';
-                document.getElementById('transfusions').value = 'Yo\'q';
-                
-                // Объективный осмотр
-                document.getElementById('temperature').value = '36,0°C';
-                document.getElementById('height').value = '164 sm';
-                document.getElementById('weight').value = '85 kg';
-                document.getElementById('condition').value = 'qoniqarli';
-                document.getElementById('consciousness').value = 'kontaktga kirishadi, shaxs, vaqt va makonda mo\'ljalga ega';
-                document.getElementById('bodyType').value = 'to\'g\'ri';
-                document.getElementById('nutrition').value = 'yetarli';
-                document.getElementById('skin').value = 'tan rangli, normal namlikda, toshmasiz';
-                document.getElementById('mucous').value = 'pushti, toshmasiz';
-                document.getElementById('edema').value = 'yo\'q';
-                document.getElementById('lymphNodes').value = 'kattalashmagan';
-                document.getElementById('thyroid').value = 'kattalashmagan';
-                document.getElementById('musculoskeletal').value = 'xususiyatsiz';
-                
-                // Сердечно-сосудистая система
-                document.getElementById('heartSounds').value = 'aniq';
-                document.getElementById('pulse').value = '106';
-                document.getElementById('heartRate').value = '106';
-                document.getElementById('bloodPressure').value = '120/80';
-                
-                // Дыхательная система
-                document.getElementById('respirationRate').value = '18';
-                document.getElementById('saturation').value = '98%';
-                document.getElementById('auscultation').value = 'vesikulyar nafas, xirillashlar yo\'q';
-                
-                // Пищеварительная система
-                document.getElementById('tongue').value = 'nam, toshmasiz';
-                document.getElementById('abdomen').value = 'yumaloq, yumshoq, og\'riqsiz';
-                document.getElementById('peritonealSigns').value = 'yo\'q';
-                document.getElementById('liver').value = 'qovurg\'a chetidan chiqmagan';
-                document.getElementById('spleen').value = 'chopilmaydi';
-                document.getElementById('bowelFunction').value = 'normal';
-                
-                // Мочеполовая система
-                document.getElementById('kidneyPalpation').value = 'o\'ng tarafda og\'riqsiz, chap tarafda og\'riqli';
-                document.getElementById('kidneyPercussion').value = 'og\'riqsiz';
-                document.getElementById('urination').value = 'qiyinlashgan, og\'riqli, tez-tez';
-                document.getElementById('diuresis').value = 'yetarli';
-                document.getElementById('genitals').value = 'to\'g\'ri rivojlangan';
-                document.getElementById('prostate').value = 'kattalashmagan, og\'riqsiz, elastik konsistensiyada';
-                
-                // Диагноз
-                document.getElementById('diagnosis').value = 'C64 Susp. Chap buyrak o\'smasi T3N0M0. Chap buyrak venasi va pastki kovak venasi o\'sma trombi';
-                document.getElementById('comorbidDiagnosis').value = 'Surunkali kalkulyoz xolesistit';
-                
-                // План обследования
-                document.getElementById('examinationPlan').value = '1. KT skanerlash\n2. Biopsiya\n3. Qon va siydik analizlari\n4. EKG\n5. Rengtgen';
-                
-                // Обоснование назначений
-                document.getElementById('prescriptionBasis').value = 'Bemorga o\'tkazilgan klinik tekshiruvlar natijasida Radikal nefrektomiya. Trombektomiya jarrohlik amaliyotini o\'tkazish maqsadga muvofiq dep topildi.';
-                
-                // Согласие и подписи (уже предзаполнены в HTML)
-                
-                // Данные для консилиума
-                document.getElementById('consiliumDate').value = '2026-01-19';
-                document.getElementById('consiliumPatientName').value = 'Turdibayev Raximjan';
-                document.getElementById('consiliumPatientId').value = '1395';
-                document.getElementById('consiliumArrivalDate').value = '2026-01-16';
-                document.getElementById('consiliumBirthDate').value = '1966-10-05';
-                document.getElementById('consiliumAddress').value = 'Toshkent Viloyati, ANGREN / Ozbekiston Mustaqillik kochasi 170-uy';
-                document.getElementById('consiliumComplaints').value = 'belning chap qismida og\'riq, siyganda achishishi, umumiy xolisizlik.';
-                document.getElementById('consiliumAnamnesisMorbi').value = document.getElementById('anamnesisMorbi').value;
-                document.getElementById('consiliumAnamnesisVitae').value = 'Boshqa o\'tkazgan kasalliklarini yengil shamollashlar bilan bog\'laydi. Dorilarga allergiya kuzatilmagan.';
-                
-                // Поля уже предзаполнены в HTML, но на всякий случай установим их значения
-                // STATUS PRAESENS поля
-                document.getElementById('consiliumTemperature').value = '36,0°C';
-                document.getElementById('consiliumHeight').value = '164 sm';
-                document.getElementById('consiliumWeight').value = '85 kg';
-                document.getElementById('consiliumCondition').value = 'qoniqarli';
-                document.getElementById('consiliumConsciousness').value = 'kontaktga kirishadi, shaxs, vaqt va makonda mo\'ljalga ega';
-                document.getElementById('consiliumBodyType').value = 'to\'g\'ri';
-                document.getElementById('consiliumNutrition').value = 'yetarli';
-                document.getElementById('consiliumSkin').value = 'tan rangli, normal namlikda, toshmasiz';
-                document.getElementById('consiliumMucous').value = 'pushti, toshmasiz';
-                document.getElementById('consiliumEdema').value = 'yo\'q';
-                document.getElementById('consiliumLymphNodes').value = 'kattalashmagan';
-                document.getElementById('consiliumThyroid').value = 'kattalashmagan';
-                document.getElementById('consiliumMusculoskeletal').value = 'xususiyatsiz';
-                
-                // STATUS LOCALIS поля
-                document.getElementById('consiliumKidneys').value = 'palpatsiyada aniqlanmaydi';
-                document.getElementById('consiliumKidneyPalpation').value = 'o\'ng tarafda og\'riqsiz, chap tarafda og\'riqli';
-                document.getElementById('consiliumKidneyPercussion').value = 'og\'riqsiz';
-                document.getElementById('consiliumBladder').value = 'palpatsiyada aniqlanmaydi';
-                document.getElementById('consiliumUrination').value = 'qiyinlashgan, og\'riqli, tez-tez';
-                document.getElementById('consiliumDiuresis').value = 'yetarli';
-                document.getElementById('consiliumGenitals').value = 'to\'g\'ri rivojlangan';
-                document.getElementById('consiliumProstate').value = 'kattalashmagan, og\'riqsiz, elastik konsistensiyada';
-                
-                // TEKSHIRUVLAR поля
-                document.getElementById('consiliumEKG').value = 'Sinus ritm, yurak urish tezligi daqiqasiga 106 marta. Yurakning elektr o\'qi chap tomonga keskin og\'gan. Chap qorinchani gipertrofiyasi';
-                document.getElementById('consiliumBloodTests').value = 'Hb- 146; RBC- 4,85; PLT- 241; WBC- 8,47; NEU%- 72,7%; AIAT- 26,4; AsAT- 18,7; kreatinin- 108,8; Mochevina- 6,7';
-                document.getElementById('consiliumOtherTests').value = 'Buyrak ultratovush tekshiruvida o\'smaga o\'xshash narsa aniqlangan.';
-                
-                // TASHXIS (остается textarea)
-                document.getElementById('consiliumTashxis').value = 'Bemorga o\'tqazilgan kompleks tekshiruvlar natijasi asosida quyidagi tashxis qo\'yildi:\nTashxis: C64 Susp. Chap buyrak o\'smasi T3CNoMo. Chap buyrak venasi va pastki kovak venasi o\'sma trombi\nHamroh kasalliklar: Surunkali kalkulyoz xolesistit.';
-                
-                // KONSILIUM QARORI (остается textarea)
-                document.getElementById('consiliumDecision').value = 'Bemorga o\'tkazilgan klinik tekshiruvlar natijasida Radikal nefrektomiya. Trombektomiya jarrohlik amaliyotini o\'tkazish maqsadga muvofiq dep topildi. Bemor va uning qarindoshlariga jarrohlik amaliyotidan keyin kuzatilishi mumkin bo\'lgan asoratlarga oid ma\'lumot berildi va jarrohlik amaliyotiga rozilik olindi.';
-                
-                // Участники консилиума
-                document.getElementById('consiliumHeadDoctor').value = 't.f.n. Xalmurzaev O.A.';
-                document.getElementById('consiliumDepartmentHead').value = 't.f.n. Xasanov Sh.T.';
-                document.getElementById('consiliumChemotherapyHead').value = 't.f.n. Tuyjanova X.X.';
-                document.getElementById('consiliumAttendingDoctor').value = 'Abdikarimov M.G.';
-                document.getElementById('consiliumDepartmentDoctor').value = 'Abdusamatov N.T.';
-                
-                // Данные для эпикриза (третий лист)
-                document.getElementById('epicrisPatientName').value = 'Turdibayev Raximjan';
-                document.getElementById('epicrisPatientId').value = '1395';
-                document.getElementById('epicrisArrivalDate').value = '2026-01-16';
-                document.getElementById('epicrisBirthDate').value = '1966-10-05';
-                document.getElementById('epicrisAddress').value = 'Toshkent Viloyati, ANGREN / Ozbekiston Mustaqillik kochasi 170-uy';
-                
-                document.getElementById('epicrisComplaints').value = 'belning chap qismida og\'riq, siyganda achishishi, umumiy xolisizlik.';
-                
-                document.getElementById('epicrisAnamnesisMorbi').value = 'Anamnezdan ma\'lumki, yuqoridagi shikoyatlar bemorda 2025 yil noyabr oyidan boshlangan. va bemor shifokorga murojat qilmagan. 06/12/25 shikoyatlar takrorlanganligi sababli Angrenda urolog ko\'rigiga borgan va buyrak ultratovush tekshiruvida o\'smaga o\'xshash narsa aniqlangan. 16/01/2026 bemor RIO va RIATM poliklinikasiga yo\'llanma olib kelgan. 16/01/2026 RIO va RIATM onkuorologiya bo\'limiga diagnostik davo uchun gospitalizatsiya qilindi.';
-                
-                document.getElementById('epicrisAnamnesisVitae').value = 'Boshqa o\'tkazgan kasalliklarini yengil shamollashlar bilan bog\'laydi. Dorilarga allergiya kuzatilmagan. Surunkali kalkulyoz xolesistit mavjud.';
-                
-                document.getElementById('epicrisDiagnosis').value = 'C64 Susp. Chap buyrak o\'smasi T3N0M0. Chap buyrak venasi va pastki kovak venasi o\'sma trombi';
-                document.getElementById('epicrisComorbidDiagnosis').value = 'Surunkali kalkulyoz xolesistit';
-                
-                // Status praesens
-                document.getElementById('epicrisTemperature').value = '36,0°C';
-                document.getElementById('epicrisHeight').value = '164 sm';
-                document.getElementById('epicrisWeight').value = '85 kg';
-                document.getElementById('epicrisCondition').value = 'qoniqarli';
-                document.getElementById('epicrisConsciousness').value = 'kontaktga kirishadi, shaxs, vaqt va makonda mo\'ljalga ega';
-                document.getElementById('epicrisBodyType').value = 'to\'g\'ri';
-                document.getElementById('epicrisNutrition').value = 'yetarli';
-                document.getElementById('epicrisSkin').value = 'tan rangli, normal namlikda, toshmasiz';
-                document.getElementById('epicrisMucous').value = 'pushti, toshmasiz';
-                document.getElementById('epicrisEdema').value = 'yo\'q';
-                document.getElementById('epicrisLymphNodes').value = 'kattalashmagan';
-                document.getElementById('epicrisThyroid').value = 'kattalashmagan';
-                document.getElementById('epicrisMusculoskeletal').value = 'xususiyatsiz';
-                
-                // Status localis
-                document.getElementById('epicrisKidneys').value = 'palpatsiyada aniqlanmaydi';
-                document.getElementById('epicrisKidneyPalpation').value = 'o\'ng tarafda og\'riqsiz, chap tarafda og\'riqli';
-                document.getElementById('epicrisKidneyPercussion').value = 'og\'riqsiz';
-                document.getElementById('epicrisBladder').value = 'palpatsiyada aniqlanmaydi';
-                document.getElementById('epicrisUrination').value = 'qiyinlashgan, og\'riqli, tez-tez';
-                document.getElementById('epicrisDiuresis').value = 'yetarli';
-                document.getElementById('epicrisGenitals').value = 'to\'g\'ri rivojlangan';
-                document.getElementById('epicrisProstate').value = 'kattalashmagan, og\'riqsiz, elastik konsistensiyada';
-                
-                // Tekshiruvlar
-                document.getElementById('epicrisUTT').value = 'Chap buyrakda o\'smaga o\'xshash hosila, 45x50 mm hajmli, buyrak to\'qimalarining buzilishi kuzatilmoqda.';
-                document.getElementById('epicrisConclusion').value = 'Chap buyrak o\'smasi (T3N0M0). O\'sma trombi buyrak venasiga va pastki kovak venaga tarqalgan.';
-                document.getElementById('epicrisBloodTests').value = 'Hb- 146; RBC- 4,85; PLT- 241; WBC- 8,47; NEU%- 72,7%; AIAT- 26,4; AsAT- 18,7; kreatinin- 108,8; Mochevina- 6,7';
-                
-                // Davo va reja
-                document.getElementById('epicrisPlanned').value = 'Radikal nefrektomiya. Trombektomiya';
-                document.getElementById('epicrisAnesthesia').value = 'Umumiy anesteziya (endotraxeal intubatsiya)';
-                document.getElementById('epicrisRecommendation').value = 'Jarrohlikdan keyin intensiv terapiya bo\'limida kuzatish. Antibiotik profilaktikasi. Analgetik terapiya.';
-                
-                // Imzolar
-                document.getElementById('epicrisAttendingDoctor').value = 'Abdikarimov M.G.';
-                document.getElementById('epicrisHeadDoctor').value = 't.f.n. Xalmurzaev O.A.';
-                document.getElementById('epicrisDepartmentHead').value = 't.f.n. Xasanov Sh.T.';
-                document.getElementById('epicrisAnesthesiologist').value = 't.f.n. Karimov B.A.';
-                document.getElementById('epicrisDepartmentDoctor').value = 'Abdusamatov N.T.';
-            }
+    // Fill form with fictional example data (click handler)
+    fillExampleBtn.addEventListener('click', function() {
+        if (confirm('Fill the form with example (fictional) data? This will overwrite current inputs.')) {
+            fillExampleData();
+            showStatus('Example data filled', true);
+        }
+    });
+
+    // Fill the form with NON-PERSONAL, fictional example data.
+    function fillExampleData() {
+        // Basic patient info (first page)
+        document.getElementById('examDate').value = '2026-01-16';
+        document.getElementById('examTime').value = '16:43';
+        document.getElementById('patientName').value = 'Example Patient';
+        document.getElementById('patientId').value = '0000';
+        document.getElementById('arrivalDate').value = '2026-01-16';
+        document.getElementById('birthDate').value = '1970-01-01';
+        document.getElementById('address').value = '123 Example St, Example City, Country';
+
+        // Complaints (fictional)
+        document.getElementById('complaints').value = 'Example complaint: intermittent flank pain and general malaise.';
+
+        // Anamnesis morbi (fictional)
+        document.getElementById('anamnesisMorbi').value = 'Symptoms started several months ago; patient consulted a local clinic and was referred for diagnostics.';
+
+        // Anamnesis vitae and background (non-personal placeholders)
+        document.getElementById('epidemic').value = 'No';
+        document.getElementById('tuberculosis').value = 'No';
+        document.getElementById('hiv').value = 'No';
+        document.getElementById('hepatitis').value = 'No';
+        document.getElementById('syphilis').value = 'No';
+        document.getElementById('covid').value = 'No';
+        document.getElementById('allergy').value = 'No known drug allergies';
+        document.getElementById('comorbidities').value = 'Example comorbidity: chronic cholecystitis';
+        document.getElementById('familyHistory').value = 'Non-contributory';
+        document.getElementById('implants').value = 'None';
+        document.getElementById('surgeries').value = 'None';
+        document.getElementById('transfusions').value = 'None';
+
+        // Objective exam (fictional values)
+        document.getElementById('temperature').value = '36.6°C';
+        document.getElementById('height').value = '170 cm';
+        document.getElementById('weight').value = '75 kg';
+        document.getElementById('condition').value = 'stable';
+        document.getElementById('consciousness').value = 'clear, oriented';
+        document.getElementById('bodyType').value = 'average';
+        document.getElementById('nutrition').value = 'adequate';
+        document.getElementById('skin').value = 'normal';
+        document.getElementById('mucous').value = 'normal';
+        document.getElementById('edema').value = 'none';
+        document.getElementById('lymphNodes').value = 'not enlarged';
+        document.getElementById('thyroid').value = 'normal';
+        document.getElementById('musculoskeletal').value = 'unremarkable';
+
+        // Cardiovascular system
+        document.getElementById('heartSounds').value = 'clear';
+        document.getElementById('pulse').value = '72';
+        document.getElementById('heartRate').value = '72';
+        document.getElementById('bloodPressure').value = '120/80';
+
+        // Respiratory system
+        document.getElementById('respirationRate').value = '16';
+        document.getElementById('saturation').value = '98%';
+        document.getElementById('auscultation').value = 'vesicular breath sounds';
+
+        // Digestive system
+        document.getElementById('tongue').value = 'moist, normal';
+        document.getElementById('abdomen').value = 'soft, non-tender';
+        document.getElementById('peritonealSigns').value = 'none';
+        document.getElementById('liver').value = 'not palpable';
+        document.getElementById('spleen').value = 'not palpable';
+        document.getElementById('bowelFunction').value = 'normal'
+
+        // Genitourinary system
+        document.getElementById('kidneyPalpation').value = 'no palpable masses';
+        document.getElementById('kidneyPercussion').value = 'non-tender';
+        document.getElementById('urination').value = 'normal';
+        document.getElementById('diuresis').value = 'adequate';
+        document.getElementById('genitals').value = 'normal';
+        document.getElementById('prostate').value = 'not enlarged';
+
+        // Diagnosis and planning (generic placeholders)
+        document.getElementById('diagnosis').value = 'Example diagnosis: renal mass (to be evaluated)';
+        document.getElementById('comorbidDiagnosis').value = 'Example comorbidity: chronic cholecystitis';
+
+        document.getElementById('examinationPlan').value = '1. CT scan\n2. Biopsy if indicated\n3. Blood and urine tests\n4. ECG\n5. Chest X-ray';
+        document.getElementById('prescriptionBasis').value = 'Recommendations based on clinical findings. Use fictional text only.';
+
+        // CONSILIUM (use fictional placeholders, no real names)
+        document.getElementById('consiliumDate').value = '2026-01-19';
+        document.getElementById('consiliumPatientName').value = 'Example Patient';
+        document.getElementById('consiliumPatientId').value = '0000';
+        document.getElementById('consiliumArrivalDate').value = '2026-01-16';
+        document.getElementById('consiliumBirthDate').value = '1970-01-01';
+        document.getElementById('consiliumAddress').value = '123 Example St, Example City, Country';
+        document.getElementById('consiliumComplaints').value = document.getElementById('complaints').value;
+        document.getElementById('consiliumAnamnesisMorbi').value = document.getElementById('anamnesisMorbi').value;
+        document.getElementById('consiliumAnamnesisVitae').value = 'Non-personal sample anamnesis text.';
+
+        // STATUS PRAESENS (fictional defaults)
+        document.getElementById('consiliumTemperature').value = '36.6°C';
+        document.getElementById('consiliumHeight').value = '170 cm';
+        document.getElementById('consiliumWeight').value = '75 kg';
+        document.getElementById('consiliumCondition').value = 'stable';
+        document.getElementById('consiliumConsciousness').value = 'clear, oriented';
+        document.getElementById('consiliumBodyType').value = 'average';
+        document.getElementById('consiliumNutrition').value = 'adequate';
+        document.getElementById('consiliumSkin').value = 'normal';
+        document.getElementById('consiliumMucous').value = 'normal';
+        document.getElementById('consiliumEdema').value = 'none';
+        document.getElementById('consiliumLymphNodes').value = 'not enlarged';
+        document.getElementById('consiliumThyroid').value = 'normal';
+        document.getElementById('consiliumMusculoskeletal').value = 'unremarkable';
+
+        // STATUS LOCALIS (fictional defaults)
+        document.getElementById('consiliumKidneys').value = 'not palpable';
+        document.getElementById('consiliumKidneyPalpation').value = 'no focal tenderness';
+        document.getElementById('consiliumKidneyPercussion').value = 'non-tender';
+        document.getElementById('consiliumBladder').value = 'not palpable';
+        document.getElementById('consiliumUrination').value = 'normal';
+        document.getElementById('consiliumDiuresis').value = 'adequate';
+        document.getElementById('consiliumGenitals').value = 'normal';
+        document.getElementById('consiliumProstate').value = 'not enlarged';
+
+        // TESTS (fictional descriptions)
+        document.getElementById('consiliumEKG').value = 'Sinus rhythm, normal rate.';
+        document.getElementById('consiliumBloodTests').value = 'Standard CBC and chemistry results (fictional values).';
+        document.getElementById('consiliumOtherTests').value = 'Ultrasound: example finding of a solid renal lesion.';
+
+        // CONSILIUM TEXTS (non-personal defaults)
+        document.getElementById('consiliumTashxis').value = 'Example: findings suggest a renal lesion that requires further evaluation.';
+        document.getElementById('consiliumDecision').value = 'Example decision: plan diagnostic workup and consider surgical consultation. Patient informed (fictional).';
+
+        // CONSILIUM PARTICIPANTS -- generic placeholders
+        document.getElementById('consiliumHeadDoctor').value = 'Dr. Head Doctor';
+        document.getElementById('consiliumDepartmentHead').value = 'Dr. Department Head';
+        document.getElementById('consiliumChemotherapyHead').value = 'Dr. Chemotherapy Head';
+        document.getElementById('consiliumAttendingDoctor').value = 'Dr. Attending Doctor';
+        document.getElementById('consiliumDepartmentDoctor').value = 'Dr. Department Doctor';
+
+        // EPIKRIZ (third page) -- use generic placeholders as well
+        document.getElementById('epicrisPatientName').value = 'Example Patient';
+        document.getElementById('epicrisPatientId').value = '0000';
+        document.getElementById('epicrisArrivalDate').value = '2026-01-16';
+        document.getElementById('epicrisBirthDate').value = '1970-01-01';
+        document.getElementById('epicrisAddress').value = '123 Example St, Example City, Country';
+
+        document.getElementById('epicrisComplaints').value = document.getElementById('complaints').value;
+        document.getElementById('epicrisAnamnesisMorbi').value = document.getElementById('anamnesisMorbi').value;
+        document.getElementById('epicrisAnamnesisVitae').value = 'Non-personal sample anamnesis text.';
+
+        document.getElementById('epicrisDiagnosis').value = 'Example diagnosis: renal lesion (to evaluate)';
+        document.getElementById('epicrisComorbidDiagnosis').value = 'Example comorbidity: chronic cholecystitis';
+
+        // EPIKRIZ status and tests
+        document.getElementById('epicrisTemperature').value = '36.6°C';
+        document.getElementById('epicrisHeight').value = '170 cm';
+        document.getElementById('epicrisWeight').value = '75 kg';
+        document.getElementById('epicrisCondition').value = 'stable';
+        document.getElementById('epicrisConsciousness').value = 'clear, oriented';
+        document.getElementById('epicrisBodyType').value = 'average';
+        document.getElementById('epicrisNutrition').value = 'adequate';
+        document.getElementById('epicrisSkin').value = 'normal';
+        document.getElementById('epicrisMucous').value = 'normal';
+        document.getElementById('epicrisEdema').value = 'none';
+        document.getElementById('epicrisLymphNodes').value = 'not enlarged';
+        document.getElementById('epicrisThyroid').value = 'normal';
+        document.getElementById('epicrisMusculoskeletal').value = 'unremarkable';
+
+        document.getElementById('epicrisKidneys').value = 'not palpable';
+        document.getElementById('epicrisKidneyPalpation').value = 'no focal tenderness';
+        document.getElementById('epicrisKidneyPercussion').value = 'non-tender';
+        document.getElementById('epicrisBladder').value = 'not palpable';
+        document.getElementById('epicrisUrination').value = 'normal';
+        document.getElementById('epicrisDiuresis').value = 'adequate';
+        document.getElementById('epicrisGenitals').value = 'normal';
+        document.getElementById('epicrisProstate').value = 'not enlarged';
+
+        document.getElementById('epicrisUTT').value = 'Example ultrasound description: solid lesion in the kidney.';
+        document.getElementById('epicrisConclusion').value = 'Example conclusion: further evaluation recommended.';
+        document.getElementById('epicrisBloodTests').value = 'Example lab results: fictional values.';
+
+        document.getElementById('epicrisPlanned').value = 'Example planned procedure: diagnostic or therapeutic intervention';
+        document.getElementById('epicrisAnesthesia').value = 'General anesthesia (example)';
+        document.getElementById('epicrisRecommendation').value = 'Postoperative monitoring and standard prophylaxis (example)';
+
+        // EPIKRIZ signatures - generic
+        document.getElementById('epicrisAttendingDoctor').value = 'Dr. Attending Doctor';
+        document.getElementById('epicrisHeadDoctor').value = 'Dr. Head Doctor';
+        document.getElementById('epicrisDepartmentHead').value = 'Dr. Department Head';
+        document.getElementById('epicrisAnesthesiologist').value = 'Dr. Anesthesiologist';
+        document.getElementById('epicrisDepartmentDoctor').value = 'Dr. Department Doctor';
+    }
             
             // Форматирование даты для отображения
             function formatDateForDisplay(dateString) {
@@ -250,13 +245,13 @@
                         input.value = '';
                     });
                     
-                    // Восстановление предзаполненных значений для подписей первого листа
-                    document.getElementById('consent').value = 'Olingan.';
-                    document.getElementById('headDoctor').value = 't.f.n. Xalmurzaev O.A.';
-                    document.getElementById('departmentHead').value = 't.f.n. Xasanov Sh. T.';
-                    document.getElementById('attendingDoctor').value = 'Abdikarimov M.G.';
+                    // Restore default (non-personal) placeholders for first page signatures
+                    document.getElementById('consent').value = 'Received.';
+                    document.getElementById('headDoctor').value = 'Dr. Head Doctor';
+                    document.getElementById('departmentHead').value = 'Dr. Department Head';
+                    document.getElementById('attendingDoctor').value = 'Dr. Attending Doctor';
                     
-                    // Восстановление предзаполненных значений для консилиума
+                    // Restore default placeholders for consilium
                     document.getElementById('consiliumDate').value = '2026-01-19';
                     
                     // STATUS PRAESENS поля
@@ -295,12 +290,12 @@
                     // KONSILIUM QARORI
                     document.getElementById('consiliumDecision').value = 'Bemorga o\'tkazilgan klinik tekshiruvlar natijasida Radikal nefrektomiya. Trombektomiya jarrohlik amaliyotini o\'tkazish maqsadga muvofiq dep topildi. Bemor va uning qarindoshlariga jarrohlik amaliyotidan keyin kuzatilishi mumkin bo\'lgan asoratlarga oid ma\'lumot berildi va jarrohlik amaliyotiga rozilik olindi.';
                     
-                    // Участники консилиума
-                    document.getElementById('consiliumHeadDoctor').value = 't.f.n. Xalmurzaev O.A.';
-                    document.getElementById('consiliumDepartmentHead').value = 't.f.n. Xasanov Sh.T.';
-                    document.getElementById('consiliumChemotherapyHead').value = 't.f.n. Tuyjanova X.X.';
-                    document.getElementById('consiliumAttendingDoctor').value = 'Abdikarimov M.G.';
-                    document.getElementById('consiliumDepartmentDoctor').value = 'Abdusamatov N.T.';
+                    // Restore default (non-personal) placeholders for consilium participants
+                    document.getElementById('consiliumHeadDoctor').value = 'Dr. Head Doctor';
+                    document.getElementById('consiliumDepartmentHead').value = 'Dr. Department Head';
+                    document.getElementById('consiliumChemotherapyHead').value = 'Dr. Chemotherapy Head';
+                    document.getElementById('consiliumAttendingDoctor').value = 'Dr. Attending Doctor';
+                    document.getElementById('consiliumDepartmentDoctor').value = 'Dr. Department Doctor';
                     
                     showStatus('Barcha ma\'lumotlar tozalandi', true);
                 }
@@ -390,7 +385,7 @@
                         departmentHead: document.getElementById('departmentHead').value,
                         attendingDoctor: document.getElementById('attendingDoctor').value,
                         
-                        // Данные консилиума
+                        // Consilium data (fictional by default)
                         consiliumDate: document.getElementById('consiliumDate').value,
                         consiliumPatientName: document.getElementById('consiliumPatientName').value,
                         consiliumPatientId: document.getElementById('consiliumPatientId').value,
@@ -442,7 +437,7 @@
                         consiliumAttendingDoctor: document.getElementById('consiliumAttendingDoctor').value,
                         consiliumDepartmentDoctor: document.getElementById('consiliumDepartmentDoctor').value,
                         
-                        // Данные эпикриза (третий лист)
+                        // Epicrisis data (third page)
                         epicrisPatientName: document.getElementById('epicrisPatientName').value,
                         epicrisPatientId: document.getElementById('epicrisPatientId').value,
                         epicrisArrivalDate: document.getElementById('epicrisArrivalDate').value,
@@ -513,7 +508,7 @@
                     // Создание документа с двумя разделами
                     const doc = new Document({
                         sections: [
-                            // Первый раздел: Бланк первичного осмотра
+                            // First section: Primary exam form
                             {
                                 properties: {
                                     page: {
@@ -886,7 +881,7 @@
                                         spacing: { after: 400 }
                                     }),
                                     
-                                    // Согласие и подписи (ПЕРВЫЙ ЛИСТ)
+                                    // Consent and signatures (FIRST PAGE)
                                     new Paragraph({
                                         children: [
                                             new TextRun({
@@ -918,7 +913,7 @@
                                     }),
                                 ]
                             },
-                            // Второй раздел: Консилиум (новая страница)
+                            // Second section: Consilium (new page)
                             {
                                 properties: {
                                     page: {
@@ -1200,7 +1195,7 @@
                                 ]
                             },
                             {
-                                // ТРЕТИЙ ЛИСТ: ЭПИКРИЗ ПЕРЕД ОПЕРАЦИЕЙ
+                                // Third page: Epicrisis before surgery
                                 pageBreakBefore: true,
                                 children: [
                                     new Paragraph({
@@ -1626,7 +1621,7 @@
                                         spacing: { after: 400 }
                                     }),
                                     
-                                    // Подписи
+                                    // Signatures (epicrisis)
                                     new Paragraph({
                                         text: "IMZOLAR",
                                         heading: HeadingLevel.HEADING_2,

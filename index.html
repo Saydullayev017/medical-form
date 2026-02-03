@@ -8,10 +8,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!--
+        medical-form: Primary medical examination form for oncourology
+        - Editable fields are marked and can be auto-filled with fictional/example data
+        - The form generates a DOCX file (client-side) using docx and FileSaver libraries
+        NOTE: Default autofill values are non-personal placeholders to protect privacy.
+    -->
     <div class="container">
         <div class="watermark">RIAMT POLIKLINIKASI</div>
         
-        <!-- ПЕРВЫЙ ЛИСТ -->
+        <!-- FIRST PAGE -->
         <div class="header">
             <h1>DAVOLOVCHI SHIFOKOR TOMONIDAN BO'LIM MUDIRI BILAN BIRGALIKDA BIRLAMCHI KO'RIK</h1>
             <h2>(ONKOUROLOGIYA)</h2>
@@ -308,7 +314,7 @@
             </div>
         </div>
 
-        <!-- ПОДПИСИ ПЕРВОГО ЛИСТА -->
+        <!-- SIGNATURES (FIRST PAGE) -->
         <div class="signatures-section">
             <div class="consent-row">
                 <div class="form-row">
@@ -320,20 +326,20 @@
             <div class="signatures">
                 <div class="signature-item">
                     <label for="headDoctor">Bo'lim raxbari:</label>
-                    <input type="text" id="headDoctor" class="signature-input editable" placeholder="t.f.n. Xalmurzaev O.A." value="t.f.n. Xalmurzaev O.A.">
+                    <input type="text" id="headDoctor" class="signature-input editable" placeholder="Dr. Head Doctor" value="Dr. Head Doctor">
                 </div>
                 <div class="signature-item">
                     <label for="departmentHead">Bo'lim mudiri:</label>
-                    <input type="text" id="departmentHead" class="signature-input editable" placeholder="t.f.n. Xasanov Sh. T." value="t.f.n. Xasanov Sh. T.">
+                    <input type="text" id="departmentHead" class="signature-input editable" placeholder="Dr. Department Head" value="Dr. Department Head">
                 </div>
                 <div class="signature-item">
                     <label for="attendingDoctor">Davolovchi shifokor:</label>
-                    <input type="text" id="attendingDoctor" class="signature-input editable" placeholder="Abdikarimov M.G." value="Abdikarimov M.G.">
+                    <input type="text" id="attendingDoctor" class="signature-input editable" placeholder="Dr. Attending Doctor" value="Dr. Attending Doctor">
                 </div>
             </div>
         </div>
 
-        <!-- ВТОРОЙ ЛИСТ: КОНСИЛИУМ -->
+        <!-- SECOND PAGE: CONSILIUM -->
         <div class="consilium-section">
             <div class="consilium-title">SHIFOKORLAR KONSILIUMI</div>
             
@@ -534,30 +540,30 @@ Hamroh kasalliklar: Surunkali kalkulyoz xolesistit.</textarea>
                 <div class="form-group">
                     <div class="form-row">
                         <label>Bo'lim rahbari:</label>
-                        <input type="text" id="consiliumHeadDoctor" class="editable" placeholder="t.f.n. Xalmurzaev O.A." value="t.f.n. Xalmurzaev O.A.">
+                        <input type="text" id="consiliumHeadDoctor" class="editable" placeholder="Dr. Head Doctor" value="Dr. Head Doctor">
                     </div>
                     <div class="form-row">
                         <label>Bo'lim mudiri:</label>
-                        <input type="text" id="consiliumDepartmentHead" class="editable" placeholder="t.f.n. Xasanov Sh.T." value="t.f.n. Xasanov Sh.T.">
+                        <input type="text" id="consiliumDepartmentHead" class="editable" placeholder="Dr. Department Head" value="Dr. Department Head">
                     </div>
                     <div class="form-row">
                         <label>Kimyoterapiya bo'limi mudiri:</label>
-                        <input type="text" id="consiliumChemotherapyHead" class="editable" placeholder="t.f.n. Tuyjanova X.X." value="t.f.n. Tuyjanova X.X.">
+                        <input type="text" id="consiliumChemotherapyHead" class="editable" placeholder="Dr. Chemotherapy Head" value="Dr. Chemotherapy Head">
                     </div>
                     <div class="form-row">
                         <label>Davolovchi shifokor:</label>
-                        <input type="text" id="consiliumAttendingDoctor" class="editable" placeholder="Abdikarimov M.G." value="Abdikarimov M.G.">
+                        <input type="text" id="consiliumAttendingDoctor" class="editable" placeholder="Dr. Attending Doctor" value="Dr. Attending Doctor">
                     </div>
                     <div class="form-row">
                         <label>Bo'lim shifokori:</label>
-                        <input type="text" id="consiliumDepartmentDoctor" class="editable" placeholder="Abdusamatov N.T." value="Abdusamatov N.T.">
+                        <input type="text" id="consiliumDepartmentDoctor" class="editable" placeholder="Dr. Department Doctor" value="Dr. Department Doctor">
                     </div>
                 </div>
             </div>
         </div>
         <!-- КОНЕЦ РАЗДЕЛА КОНСИЛИУМА -->
 
-        <!-- ТРЕТИЙ ЛИСТ: ЭПИКРИЗ ПЕРЕД ОПЕРАЦИЕЙ -->
+        <!-- THIRD PAGE: EPIKRIZ BEFORE SURGERY -->
         <div class="consilium-section">
             <div class="consilium-title">JARROHLIK AMALIYOTI OLDI EPIKRIZ</div>
             

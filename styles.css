@@ -1,10 +1,17 @@
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+/*
+    styles.css
+    - Global styles for the medical-form app
+    - Layout is optimized for printing A4 (using mm values)
+    - Sectioned styles for main form, consilium, and epikriz pages
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
         body {
             background-color: #f5f5f5;
@@ -225,7 +232,7 @@
             color: red;
         }
 
-        /* Стили для раздела консилиума */
+        /* Styles for consilium section */
         .consilium-section {
 
             padding: 20px;
@@ -248,6 +255,7 @@
             min-width: 200px;
         }
 
+        /* Print-specific styles: hide UI actions and adjust layout for paper */
         @media print {
             body {
                 background-color: white;
@@ -275,6 +283,7 @@
             }
         }
 
+        /* Light background watermark to identify the document template */
         .watermark {
             position: absolute;
             top: 50%;
