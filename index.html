@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birlamchi ko'rik - Onkourologiya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="watermark">RIAMT POLIKLINIKASI</div>
+        
+        <!-- ПЕРВЫЙ ЛИСТ -->
+        <div class="header">
+            <h1>DAVOLOVCHI SHIFOKOR TOMONIDAN BO'LIM MUDIRI BILAN BIRGALIKDA BIRLAMCHI KO'RIK</h1>
+            <h2>(ONKOUROLOGIYA)</h2>
+        </div>
+
+        <div class="date-time">
+            <div class="form-row">
+                <label>Sana:</label>
+                <input type="date" id="examDate" class="editable">
+            </div>
+            <div class="form-row">
+                <label>Soat:</label>
+                <input type="time" id="examTime" class="editable">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">BEMOR MA'LUMOTLARI</div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label class="required">Bemor F.I.Sh.:</label>
+                    <input type="text" id="patientName" class="editable" placeholder="Familiya Ism Sharifi">
+                </div>
+                <div class="form-row">
+                    <label>K.T. №:</label>
+                    <input type="text" id="patientId" class="editable" placeholder="Karta raqami">
+                </div>
+                <div class="form-row">
+                    <label class="required">Kelgan kuni:</label>
+                    <input type="date" id="arrivalDate" class="editable">
+                </div>
+                <div class="form-row">
+                    <label class="required">Tug'ilgan yili:</label>
+                    <input type="date" id="birthDate" class="editable">
+                </div>
+                <div class="form-row">
+                    <label class="required">Yashash joyi:</label>
+                    <input type="text" id="address" class="editable" placeholder="Manzil">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">SHIKOYATLAR</div>
+            <div class="form-group">
+                <textarea id="complaints" class="editable" placeholder="Bemorning shikoyatlari"></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">ANAMNEZ MORBI</div>
+            <div class="form-group">
+                <textarea id="anamnesisMorbi" class="editable" placeholder="Anamnez morbi"></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">ANAMNEZ VITAE</div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label>Epidemiologik anamnez:</label>
+                    <input type="text" id="epidemic" class="editable" placeholder="Epidemiologik anamnez">
+                </div>
+                <div class="form-row">
+                    <label>Sil:</label>
+                    <input type="text" id="tuberculosis" class="editable" placeholder="Sil">
+                </div>
+                <div class="form-row">
+                    <label>OIV-infeksiyasi:</label>
+                    <input type="text" id="hiv" class="editable" placeholder="OIV-infeksiyasi">
+                </div>
+                <div class="form-row">
+                    <label>Virusli gepatitlar:</label>
+                    <input type="text" id="hepatitis" class="editable" placeholder="Virusli gepatitlar">
+                </div>
+                <div class="form-row">
+                    <label>Sifilis:</label>
+                    <input type="text" id="syphilis" class="editable" placeholder="Sifilis">
+                </div>
+                <div class="form-row">
+                    <label>COVID-19 anamnezi:</label>
+                    <input type="text" id="covid" class="editable" placeholder="COVID-19 anamnezi">
+                </div>
+                <div class="form-row">
+                    <label>Allergiyalar:</label>
+                    <input type="text" id="allergy" class="editable" placeholder="Allergiyalar">
+                </div>
+                <div class="form-row">
+                    <label>Hamroh kasalliklar:</label>
+                    <input type="text" id="comorbidities" class="editable" placeholder="Hamroh kasalliklar">
+                </div>
+                <div class="form-row">
+                    <label>Nasliy anamnez:</label>
+                    <input type="text" id="familyHistory" class="editable" placeholder="Nasliy anamnez">
+                </div>
+                <div class="form-row">
+                    <label>Implantlar:</label>
+                    <input type="text" id="implants" class="editable" placeholder="Implantlar">
+                </div>
+                <div class="form-row">
+                    <label>Jarrohlik amaliyotlari va jarohatlar:</label>
+                    <input type="text" id="surgeries" class="editable" placeholder="Jarrohlik amaliyotlari va jarohatlar">
+                </div>
+                <div class="form-row">
+                    <label>Gemotransfuziya:</label>
+                    <input type="text" id="transfusions" class="editable" placeholder="Gemotransfuziya">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">OBYEKTIV KO'RIK</div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label>Tana harorati:</label>
+                    <input type="text" id="temperature" class="editable" placeholder="Tana harorati">
+                </div>
+                <div class="form-row">
+                    <label>Bo'yi:</label>
+                    <input type="text" id="height" class="editable" placeholder="Bo'yi">
+                </div>
+                <div class="form-row">
+                    <label>Vazni:</label>
+                    <input type="text" id="weight" class="editable" placeholder="Vazni">
+                </div>
+                <div class="form-row">
+                    <label>Holati:</label>
+                    <input type="text" id="condition" class="editable" placeholder="Holati">
+                </div>
+                <div class="form-row">
+                    <label>Hush darajasi:</label>
+                    <input type="text" id="consciousness" class="editable" placeholder="Hush darajasi">
+                </div>
+                <div class="form-row">
+                    <label>Tana tuzilishi:</label>
+                    <input type="text" id="bodyType" class="editable" placeholder="Tana tuzilishi">
+                </div>
+                <div class="form-row">
+                    <label>Ovqatlanish:</label>
+                    <input type="text" id="nutrition" class="editable" placeholder="Ovqatlanish">
+                </div>
+                <div class="form-row">
+                    <label>Teri qoplami:</label>
+                    <input type="text" id="skin" class="editable" placeholder="Teri qoplami">
+                </div>
+                <div class="form-row">
+                    <label>Ko'rinadigan shilliq pardalar:</label>
+                    <input type="text" id="mucous" class="editable" placeholder="Ko'rinadigan shilliq pardalar">
+                </div>
+                <div class="form-row">
+                    <label>Shishlar:</label>
+                    <input type="text" id="edema" class="editable" placeholder="Shishlar">
+                </div>
+                <div class="form-row">
+                    <label>Limfa tugunlari:</label>
+                    <input type="text" id="lymphNodes" class="editable" placeholder="Limfa tugunlari">
+                </div>
+                <div class="form-row">
+                    <label>Qalqonsimon bez:</label>
+                    <input type="text" id="thyroid" class="editable" placeholder="Qalqonsimon bez">
+                </div>
+                <div class="form-row">
+                    <label>Skelet-mushak tizimi:</label>
+                    <input type="text" id="musculoskeletal" class="editable" placeholder="Skelet-mushak tizimi">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">YURAK-QON TOMIR TIZIMI</div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label>Perkussiyada yurak chegaralari o'zgarmagan. Yurak tonlari:</label>
+                    <input type="text" id="heartSounds" class="editable" placeholder="Yurak tonlari">
+                </div>
+                <div class="form-row">
+                    <label>Puls:</label>
+                    <input type="text" id="pulse" class="editable" placeholder="Puls">
+                </div>
+                <div class="form-row">
+                    <label>Yurak urishlar soni:</label>
+                    <input type="text" id="heartRate" class="editable" placeholder="Yurak urishlar soni">
+                </div>
+                <div class="form-row">
+                    <label>Arterial bosim:</label>
+                    <input type="text" id="bloodPressure" class="editable" placeholder="Arterial bosim">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">NAFAS TIZIMI</div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label>Nafas olish soni:</label>
+                    <input type="text" id="respirationRate" class="editable" placeholder="Nafas olish soni">
+                </div>
+                <div class="form-row">
+                    <label>Saturatsiya (SpO₂):</label>
+                    <input type="text" id="saturation" class="editable" placeholder="Saturatsiya">
+                </div>
+                <div class="form-row">
+                    <label>Auskultatsiya:</label>
+                    <input type="text" id="auscultation" class="editable" placeholder="Auskultatsiya">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">OVQAT HAZM QILISH TIZIMI</div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label>Til:</label>
+                    <input type="text" id="tongue" class="editable" placeholder="Til">
+                </div>
+                <div class="form-row">
+                    <label>Qorin:</label>
+                    <input type="text" id="abdomen" class="editable" placeholder="Qorin">
+                </div>
+                <div class="form-row">
+                    <label>Qorin pardasi tirnash belgilari:</label>
+                    <input type="text" id="peritonealSigns" class="editable" placeholder="Qorin pardasi tirnash belgilari">
+                </div>
+                <div class="form-row">
+                    <label>Jigar:</label>
+                    <input type="text" id="liver" class="editable" placeholder="Jigar">
+                </div>
+                <div class="form-row">
+                    <label>Taloq:</label>
+                    <input type="text" id="spleen" class="editable" placeholder="Taloq">
+                </div>
+                <div class="form-row">
+                    <label>Ichak faoliyati (so'ziga ko'ra):</label>
+                    <input type="text" id="bowelFunction" class="editable" placeholder="Ichak faoliyati">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">SIYDIK-JINSIY TIZIMI</div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label>Buyraklar: palpatsiyada aniqlanmaydi. Ular sohasida palpatsiya:</label>
+                    <input type="text" id="kidneyPalpation" class="editable" placeholder="Ular sohasida palpatsiya">
+                </div>
+                <div class="form-row">
+                    <label>Bel sohasiga urish:</label>
+                    <input type="text" id="kidneyPercussion" class="editable" placeholder="Bel sohasiga urish">
+                </div>
+                <div class="form-row">
+                    <label>Siydik pufagi: palpatsiyada aniqlanmaydi. Siyish:</label>
+                    <input type="text" id="urination" class="editable" placeholder="Siydik pufagi va siyish">
+                </div>
+                <div class="form-row">
+                    <label>Diurez:</label>
+                    <input type="text" id="diuresis" class="editable" placeholder="Diurez">
+                </div>
+                <div class="form-row">
+                    <label>Jinsiy a'zolar:</label>
+                    <input type="text" id="genitals" class="editable" placeholder="Jinsiy a'zolar">
+                </div>
+                <div class="form-row">
+                    <label>Prostata bezi (PR):</label>
+                    <input type="text" id="prostate" class="editable" placeholder="Prostata bezi">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">TASHXIS</div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label class="required">Asosiy tashxis:</label>
+                    <input type="text" id="diagnosis" class="editable" placeholder="Asosiy tashxis">
+                </div>
+                <div class="form-row">
+                    <label>Hamroh kasalliklar:</label>
+                    <input type="text" id="comorbidDiagnosis" class="editable" placeholder="Hamroh kasalliklar">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">TEKSHIRUV REJASI</div>
+            <div class="form-group">
+                <textarea id="examinationPlan" class="editable" placeholder="Tekshiruv rejasi"></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">TAYINLAMLARNING ASOSLANTRILISHI</div>
+            <div class="form-group">
+                <textarea id="prescriptionBasis" class="editable" placeholder="Tayinlamalarning asoslantirilishi"></textarea>
+            </div>
+        </div>
+
+        <!-- ПОДПИСИ ПЕРВОГО ЛИСТА -->
+        <div class="signatures-section">
+            <div class="consent-row">
+                <div class="form-row">
+                    <label>Shaxsiy ma'lumotlar va tibbiy aralashuvga rozilik:</label>
+                    <input type="text" id="consent" class="editable" placeholder="Shaxsiy ma'lumotlar va tibbiy aralashuvga rozilik" value="Olingan.">
+                </div>
+            </div>
+            
+            <div class="signatures">
+                <div class="signature-item">
+                    <label for="headDoctor">Bo'lim raxbari:</label>
+                    <input type="text" id="headDoctor" class="signature-input editable" placeholder="t.f.n. Xalmurzaev O.A." value="t.f.n. Xalmurzaev O.A.">
+                </div>
+                <div class="signature-item">
+                    <label for="departmentHead">Bo'lim mudiri:</label>
+                    <input type="text" id="departmentHead" class="signature-input editable" placeholder="t.f.n. Xasanov Sh. T." value="t.f.n. Xasanov Sh. T.">
+                </div>
+                <div class="signature-item">
+                    <label for="attendingDoctor">Davolovchi shifokor:</label>
+                    <input type="text" id="attendingDoctor" class="signature-input editable" placeholder="Abdikarimov M.G." value="Abdikarimov M.G.">
+                </div>
+            </div>
+        </div>
+
+        <!-- ВТОРОЙ ЛИСТ: КОНСИЛИУМ -->
+        <div class="consilium-section">
+            <div class="consilium-title">SHIFOKORLAR KONSILIUMI</div>
+            
+            <div class="section">
+                <div class="section-title">KONSILIUM MA'LUMOTLARI</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>Konsilium sanasi:</label>
+                        <input type="date" id="consiliumDate" class="editable" value="2026-01-19">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">BEMOR MA'LUMOTLARI (KONSILIUM UCHUN)</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>Bemor F.I.Sh.:</label>
+                        <input type="text" id="consiliumPatientName" class="editable" placeholder="Familiya Ism Sharifi">
+                    </div>
+                    <div class="form-row">
+                        <label>K.T. №:</label>
+                        <input type="text" id="consiliumPatientId" class="editable" placeholder="Karta raqami">
+                    </div>
+                    <div class="form-row">
+                        <label>Kelgan kuni:</label>
+                        <input type="date" id="consiliumArrivalDate" class="editable">
+                    </div>
+                    <div class="form-row">
+                        <label>Tug'ilgan yili:</label>
+                        <input type="date" id="consiliumBirthDate" class="editable">
+                    </div>
+                    <div class="form-row">
+                        <label>Yashash joyi:</label>
+                        <input type="text" id="consiliumAddress" class="editable" placeholder="Manzil">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">SHIKOYATLAR</div>
+                <div class="form-group">
+                    <textarea id="consiliumComplaints" class="editable" placeholder="Bemorning shikoyatlari"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">ANAMNEZ MORBI</div>
+                <div class="form-group">
+                    <textarea id="consiliumAnamnesisMorbi" class="editable" placeholder="Anamnez morbi"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">ANAMNEZ VITAE</div>
+                <div class="form-group">
+                    <textarea id="consiliumAnamnesisVitae" class="editable" placeholder="Anamnez vitae"></textarea>
+                </div>
+            </div>
+
+            <!-- STATUS PRAESENS с отдельными полями -->
+            <div class="section">
+                <div class="section-title">STATUS PRAESENS</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>Tana harorati:</label>
+                        <input type="text" id="consiliumTemperature" class="editable consilium-input" placeholder="Tana harorati" value="36,0°C">
+                    </div>
+                    <div class="form-row">
+                        <label>Bo'yi:</label>
+                        <input type="text" id="consiliumHeight" class="editable consilium-input" placeholder="Bo'yi" value="164 sm">
+                    </div>
+                    <div class="form-row">
+                        <label>Vazni:</label>
+                        <input type="text" id="consiliumWeight" class="editable consilium-input" placeholder="Vazni" value="85 kg">
+                    </div>
+                    <div class="form-row">
+                        <label>Holati:</label>
+                        <input type="text" id="consiliumCondition" class="editable consilium-input" placeholder="Holati" value="qoniqarli">
+                    </div>
+                    <div class="form-row">
+                        <label>Hush darajasi:</label>
+                        <input type="text" id="consiliumConsciousness" class="editable consilium-input" placeholder="Hush darajasi" value="kontaktga kirishadi, shaxs, vaqt va makonda mo'ljalga ega">
+                    </div>
+                    <div class="form-row">
+                        <label>Tana tuzilishi:</label>
+                        <input type="text" id="consiliumBodyType" class="editable consilium-input" placeholder="Tana tuzilishi" value="to'g'ri">
+                    </div>
+                    <div class="form-row">
+                        <label>Ovqatlanish:</label>
+                        <input type="text" id="consiliumNutrition" class="editable consilium-input" placeholder="Ovqatlanish" value="yetarli">
+                    </div>
+                    <div class="form-row">
+                        <label>Teri qoplami:</label>
+                        <input type="text" id="consiliumSkin" class="editable consilium-input" placeholder="Teri qoplami" value="tan rangli, normal namlikda, toshmasiz">
+                    </div>
+                    <div class="form-row">
+                        <label>Ko'rinadigan shilliq pardalar:</label>
+                        <input type="text" id="consiliumMucous" class="editable consilium-input" placeholder="Ko'rinadigan shilliq pardalar" value="pushti, toshmasiz">
+                    </div>
+                    <div class="form-row">
+                        <label>Shishlar:</label>
+                        <input type="text" id="consiliumEdema" class="editable consilium-input" placeholder="Shishlar" value="yo'q">
+                    </div>
+                    <div class="form-row">
+                        <label>Limfa tugunlari:</label>
+                        <input type="text" id="consiliumLymphNodes" class="editable consilium-input" placeholder="Limfa tugunlari" value="kattalashmagan">
+                    </div>
+                    <div class="form-row">
+                        <label>Qalqonsimon bez:</label>
+                        <input type="text" id="consiliumThyroid" class="editable consilium-input" placeholder="Qalqonsimon bez" value="kattalashmagan">
+                    </div>
+                    <div class="form-row">
+                        <label>Skelet-mushak tizimi:</label>
+                        <input type="text" id="consiliumMusculoskeletal" class="editable consilium-input" placeholder="Skelet-mushak tizimi" value="xususiyatsiz">
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATUS LOCALIS с отдельными полями -->
+            <div class="section">
+                <div class="section-title">STATUS LOCALIS</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>Buyraklar:</label>
+                        <input type="text" id="consiliumKidneys" class="editable consilium-input" placeholder="Buyraklar" value="palpatsiyada aniqlanmaydi">
+                    </div>
+                    <div class="form-row">
+                        <label>Ular sohasida palpatsiya:</label>
+                        <input type="text" id="consiliumKidneyPalpation" class="editable consilium-input" placeholder="Ular sohasida palpatsiya" value="o'ng tarafda og'riqsiz, chap tarafda og'riqli">
+                    </div>
+                    <div class="form-row">
+                        <label>Bel sohasiga urish:</label>
+                        <input type="text" id="consiliumKidneyPercussion" class="editable consilium-input" placeholder="Bel sohasiga urish" value="og'riqsiz">
+                    </div>
+                    <div class="form-row">
+                        <label>Siydik pufagi:</label>
+                        <input type="text" id="consiliumBladder" class="editable consilium-input" placeholder="Siydik pufagi" value="palpatsiyada aniqlanmaydi">
+                    </div>
+                    <div class="form-row">
+                        <label>Siyish:</label>
+                        <input type="text" id="consiliumUrination" class="editable consilium-input" placeholder="Siyish" value="qiyinlashgan, og'riqli, tez-tez">
+                    </div>
+                    <div class="form-row">
+                        <label>Diurez:</label>
+                        <input type="text" id="consiliumDiuresis" class="editable consilium-input" placeholder="Diurez" value="yetarli">
+                    </div>
+                    <div class="form-row">
+                        <label>Jinsiy a'zolar:</label>
+                        <input type="text" id="consiliumGenitals" class="editable consilium-input" placeholder="Jinsiy a'zolar" value="to'g'ri rivojlangan">
+                    </div>
+                    <div class="form-row">
+                        <label>Prostata bezi (PR):</label>
+                        <input type="text" id="consiliumProstate" class="editable consilium-input" placeholder="Prostata bezi" value="kattalashmagan, og'riqsiz, elastik konsistensiyada">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEKSHIRUVLAR с отдельными полями -->
+            <div class="section">
+                <div class="section-title">TEKSHIRUVLAR</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>EKG:</label>
+                        <input type="text" id="consiliumEKG" class="editable consilium-input" placeholder="EKG" value="Sinus ritm, yurak urish tezligi daqiqasiga 106 marta. Yurakning elektr o'qi chap tomonga keskin og'gan. Chap qorinchani gipertrofiyasi">
+                    </div>
+                    <div class="form-row">
+                        <label>Qon taxlillari:</label>
+                        <input type="text" id="consiliumBloodTests" class="editable consilium-input" placeholder="Qon taxlillari" value="Hb- 146; RBC- 4,85; PLT- 241; WBC- 8,47; NEU%- 72,7%; AIAT- 26,4; AsAT- 18,7; kreatinin- 108,8; Mochevina- 6,7">
+                    </div>
+                    <div class="form-row">
+                        <label>Boshqa tekshiruvlar:</label>
+                        <input type="text" id="consiliumOtherTests" class="editable consilium-input" placeholder="Boshqa tekshiruvlar">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASHXIS (остается textarea) -->
+            <div class="section">
+                <div class="section-title">TASHXIS</div>
+                <div class="form-group">
+                    <textarea id="consiliumTashxis" class="editable consilium-textarea" placeholder="Tashxis">Bemorga o'tqazilgan kompleks tekshiruvlar natijasi asosida quyidagi tashxis qo'yildi:
+Tashxis: C64 Susp. Chap buyrak o'smasi T3CNoMo. Chap buyrak venasi va pastki kovak venasi o'sma trombi
+Hamroh kasalliklar: Surunkali kalkulyoz xolesistit.</textarea>
+                </div>
+            </div>
+
+            <!-- KONSILIUM QARORI (остается textarea) -->
+            <div class="section">
+                <div class="section-title">KONSILIUM QARORI</div>
+                <div class="form-group">
+                    <textarea id="consiliumDecision" class="editable consilium-textarea" placeholder="Konsilium qarori">Bemorga o'tkazilgan klinik tekshiruvlar natijasida Radikal nefrektomiya. Trombektomiya jarrohlik amaliyotini o'tkazish maqsadga muvofiq dep topildi. Bemor va uning qarindoshlariga jarrohlik amaliyotidan keyin kuzatilishi mumkin bo'lgan asoratlarga oid ma'lumot berildi va jarrohlik amaliyotiga rozilik olindi.</textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">KONSILIUM ISHTIROKCHILARI</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>Bo'lim rahbari:</label>
+                        <input type="text" id="consiliumHeadDoctor" class="editable" placeholder="t.f.n. Xalmurzaev O.A." value="t.f.n. Xalmurzaev O.A.">
+                    </div>
+                    <div class="form-row">
+                        <label>Bo'lim mudiri:</label>
+                        <input type="text" id="consiliumDepartmentHead" class="editable" placeholder="t.f.n. Xasanov Sh.T." value="t.f.n. Xasanov Sh.T.">
+                    </div>
+                    <div class="form-row">
+                        <label>Kimyoterapiya bo'limi mudiri:</label>
+                        <input type="text" id="consiliumChemotherapyHead" class="editable" placeholder="t.f.n. Tuyjanova X.X." value="t.f.n. Tuyjanova X.X.">
+                    </div>
+                    <div class="form-row">
+                        <label>Davolovchi shifokor:</label>
+                        <input type="text" id="consiliumAttendingDoctor" class="editable" placeholder="Abdikarimov M.G." value="Abdikarimov M.G.">
+                    </div>
+                    <div class="form-row">
+                        <label>Bo'lim shifokori:</label>
+                        <input type="text" id="consiliumDepartmentDoctor" class="editable" placeholder="Abdusamatov N.T." value="Abdusamatov N.T.">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- КОНЕЦ РАЗДЕЛА КОНСИЛИУМА -->
+
+        <!-- ТРЕТИЙ ЛИСТ: ЭПИКРИЗ ПЕРЕД ОПЕРАЦИЕЙ -->
+        <div class="consilium-section">
+            <div class="consilium-title">JARROHLIK AMALIYOTI OLDI EPIKRIZ</div>
+            
+            <div class="section">
+                <div class="section-title">BEMOR MA'LUMOTLARI</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label class="required">Bemor F.I.Sh.:</label>
+                        <input type="text" id="epicrisPatientName" class="editable" placeholder="Familiya Ism Sharifi">
+                    </div>
+                    <div class="form-row">
+                        <label>K.T. №:</label>
+                        <input type="text" id="epicrisPatientId" class="editable" placeholder="Karta raqami">
+                    </div>
+                    <div class="form-row">
+                        <label class="required">Kelgan kuni:</label>
+                        <input type="date" id="epicrisArrivalDate" class="editable">
+                    </div>
+                    <div class="form-row">
+                        <label class="required">Tug'ilgan yil:</label>
+                        <input type="date" id="epicrisBirthDate" class="editable">
+                    </div>
+                    <div class="form-row">
+                        <label class="required">Yashash joyi:</label>
+                        <input type="text" id="epicrisAddress" class="editable" placeholder="Manzil">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">TASHXISLAR</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label class="required">Tashxis:</label>
+                        <input type="text" id="epicrisDiagnosis" class="editable" placeholder="Asosiy tashxis">
+                    </div>
+                    <div class="form-row">
+                        <label>Hamroh kasalliklar:</label>
+                        <input type="text" id="epicrisComorbidDiagnosis" class="editable" placeholder="Hamroh kasalliklar">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">SHIKOYATLAR</div>
+                <div class="form-group">
+                    <textarea id="epicrisComplaints" class="editable" placeholder="Bemorning shikoyatlari"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">ANAMNEZ</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>Anamnesis morbi:</label>
+                    </div>
+                    <textarea id="epicrisAnamnesisMorbi" class="editable" placeholder="Anamnez morbi"></textarea>
+                    
+                    <div class="form-row" style="margin-top: 15px;">
+                        <label>Anamnesis Vitae:</label>
+                    </div>
+                    <textarea id="epicrisAnamnesisVitae" class="editable" placeholder="Anamnez vitae"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">OBYEKTIV STATUS</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>Status praesens:</label>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label>Tana harorati:</label>
+                        <input type="text" id="epicrisTemperature" class="editable consilium-input" placeholder="Tana harorati">
+                    </div>
+                    <div class="form-row">
+                        <label>Bo'yi:</label>
+                        <input type="text" id="epicrisHeight" class="editable consilium-input" placeholder="Bo'yi">
+                    </div>
+                    <div class="form-row">
+                        <label>Vazni:</label>
+                        <input type="text" id="epicrisWeight" class="editable consilium-input" placeholder="Vazni">
+                    </div>
+                    <div class="form-row">
+                        <label>Holati:</label>
+                        <input type="text" id="epicrisCondition" class="editable consilium-input" placeholder="Holati">
+                    </div>
+                    <div class="form-row">
+                        <label>Hush darajasi:</label>
+                        <input type="text" id="epicrisConsciousness" class="editable consilium-input" placeholder="Hush darajasi">
+                    </div>
+                    <div class="form-row">
+                        <label>Tana tuzilishi:</label>
+                        <input type="text" id="epicrisBodyType" class="editable consilium-input" placeholder="Tana tuzilishi">
+                    </div>
+                    <div class="form-row">
+                        <label>Ovqatlanish:</label>
+                        <input type="text" id="epicrisNutrition" class="editable consilium-input" placeholder="Ovqatlanish">
+                    </div>
+                    <div class="form-row">
+                        <label>Teri qoplami:</label>
+                        <input type="text" id="epicrisSkin" class="editable consilium-input" placeholder="Teri qoplami">
+                    </div>
+                    <div class="form-row">
+                        <label>Ko'rinadigan shilliq pardalar:</label>
+                        <input type="text" id="epicrisMucous" class="editable consilium-input" placeholder="Ko'rinadigan shilliq pardalar">
+                    </div>
+                    <div class="form-row">
+                        <label>Shishlar:</label>
+                        <input type="text" id="epicrisEdema" class="editable consilium-input" placeholder="Shishlar">
+                    </div>
+                    <div class="form-row">
+                        <label>Limfa tugunlari:</label>
+                        <input type="text" id="epicrisLymphNodes" class="editable consilium-input" placeholder="Limfa tugunlari">
+                    </div>
+                    <div class="form-row">
+                        <label>Qalqonsimon bez:</label>
+                        <input type="text" id="epicrisThyroid" class="editable consilium-input" placeholder="Qalqonsimon bez">
+                    </div>
+                    <div class="form-row">
+                        <label>Skelet-mushak tizimi:</label>
+                        <input type="text" id="epicrisMusculoskeletal" class="editable consilium-input" placeholder="Skelet-mushak tizimi">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">LOKAL STATUS</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>Status Localis:</label>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label>Buyraklar:</label>
+                        <input type="text" id="epicrisKidneys" class="editable consilium-input" placeholder="Buyraklar">
+                    </div>
+                    <div class="form-row">
+                        <label>Ular sohasida palpatsiya:</label>
+                        <input type="text" id="epicrisKidneyPalpation" class="editable consilium-input" placeholder="Ular sohasida palpatsiya">
+                    </div>
+                    <div class="form-row">
+                        <label>Bel sohasiga urish:</label>
+                        <input type="text" id="epicrisKidneyPercussion" class="editable consilium-input" placeholder="Bel sohasiga urish">
+                    </div>
+                    <div class="form-row">
+                        <label>Siydik pufagi:</label>
+                        <input type="text" id="epicrisBladder" class="editable consilium-input" placeholder="Siydik pufagi">
+                    </div>
+                    <div class="form-row">
+                        <label>Siyish:</label>
+                        <input type="text" id="epicrisUrination" class="editable consilium-input" placeholder="Siyish">
+                    </div>
+                    <div class="form-row">
+                        <label>Diurez:</label>
+                        <input type="text" id="epicrisDiuresis" class="editable consilium-input" placeholder="Diurez">
+                    </div>
+                    <div class="form-row">
+                        <label>Jinsiy a'zolar:</label>
+                        <input type="text" id="epicrisGenitals" class="editable consilium-input" placeholder="Jinsiy a'zolar">
+                    </div>
+                    <div class="form-row">
+                        <label>Prostata bezi (PR):</label>
+                        <input type="text" id="epicrisProstate" class="editable consilium-input" placeholder="Prostata bezi">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">TEKSHIRUVLAR</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>Tekshiruvlar:</label>
+                    </div>
+                    <div class="form-row">
+                        <label>UTT:</label>
+                        <input type="text" id="epicrisUTT" class="editable consilium-input" placeholder="Ultratovush tekshiruvi">
+                    </div>
+                    <div class="form-row">
+                        <label>Xulosa:</label>
+                        <input type="text" id="epicrisConclusion" class="editable consilium-input" placeholder="Xulosa">
+                    </div>
+                    <div class="form-row">
+                        <label>Qon tahlillari:</label>
+                        <input type="text" id="epicrisBloodTests" class="editable consilium-input" placeholder="Qon tahlillari">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">DAVO VA REJA</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>Rejalashtirildi:</label>
+                        <input type="text" id="epicrisPlanned" class="editable" placeholder="Rejalashtirilgan amaliyot">
+                    </div>
+                    <div class="form-row">
+                        <label>Og'riqsizlantirish usuli:</label>
+                        <input type="text" id="epicrisAnesthesia" class="editable" placeholder="Og'riqsizlantirish usuli">
+                    </div>
+                    <div class="form-row">
+                        <label>Tavsiya:</label>
+                        <input type="text" id="epicrisRecommendation" class="editable" placeholder="Tavsiyalar">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">IMZOLAR</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label>Dav.shifokor:</label>
+                        <input type="text" id="epicrisAttendingDoctor" class="editable" placeholder="Davolovchi shifokor">
+                    </div>
+                    <div class="form-row">
+                        <label>Bo'lim raxbari:</label>
+                        <input type="text" id="epicrisHeadDoctor" class="editable" placeholder="Bo'lim rahbari">
+                    </div>
+                    <div class="form-row">
+                        <label>Bo'lim mudiri:</label>
+                        <input type="text" id="epicrisDepartmentHead" class="editable" placeholder="Bo'lim mudiri">
+                    </div>
+                    <div class="form-row">
+                        <label>Anesteziolog:</label>
+                        <input type="text" id="epicrisAnesthesiologist" class="editable" placeholder="Anesteziolog">
+                    </div>
+                    <div class="form-row">
+                        <label>Bo'lim shifokori:</label>
+                        <input type="text" id="epicrisDepartmentDoctor" class="editable" placeholder="Bo'lim shifokori">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- КОНЕЦ РАЗДЕЛА ЭПИКРИЗА -->
+
+        <div class="actions">
+            <button type="button" class="btn btn-save" id="saveBtn">
+                <i class="fas fa-save"></i> Hujjatni saqlash (.docx)
+            </button>
+            <button type="button" class="btn btn-reset" id="resetBtn">
+                <i class="fas fa-redo"></i> Tozalash
+            </button>
+            <button type="button" class="btn btn-save" id="fillExampleBtn" style="background-color: #28a745;">
+                <i class="fas fa-file-medical"></i> Namuna ma'lumotlar
+            </button>
+        </div>
+
+        <div class="status" id="statusMessage"></div>
+    </div>
+
+    <!-- Библиотеки для генерации DOCX -->
+    <script src="https://unpkg.com/docx@8.0.0/build/index.js"></script>
+    <script src="https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
